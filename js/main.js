@@ -2,15 +2,18 @@
 
 
 $(document).ready(function(event) {
-    $("#btTestA").on("click",function(){
-       var x = testA(); 
+    $("#btTest01").on("click",function(){
+       var x = test01(); 
     });
 
+    $("#btQTest").on("click",function(){
+       var p = testQ(); 
+    });
 }); // Fine document
 
 
 
-function testA() {
+function test01() {
 //    var arr = [10,1,20,1.2,10,100,1];
 //    console.log(_.uniq(arr,true));
     
@@ -57,6 +60,22 @@ function testA() {
     console.log(arr);
 
     
+}
+
+
+function testQ(){
+    var a = 10;
+    var b = 20;
+    var promise = addWithPromise(a,b);
+    console.log(promise);
+    promise.then(function(result){
+       //assert.equal(result, a+b);          
+       console.log(result + " : " + a+b);          
+    });
+}
+
+function addWithPromise(a,b){
+    return a+b;
 }
 
 
