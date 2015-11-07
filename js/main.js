@@ -66,7 +66,9 @@ function test01() {
 function testQ(){
     var a = 10;
     var b = 20;
-    var promise = addWithPromise(a,b);
+    //FIXME: addWithPromise non restituisce un promise!!!
+    //var promise = addWithPromise(a,b);
+    var promise = Q(add(a,b));
     console.log(promise);
     promise.then(function(result){
        //assert.equal(result, a+b);          
@@ -75,6 +77,13 @@ function testQ(){
 }
 
 function addWithPromise(a,b){
+	var defer = Q.defer();
+	// risolvi il promise subito in questo caso
+    defer.resolve(a+b);
+
+    return defer.promise;
+}
+function add(a,b){
     return a+b;
 }
 
